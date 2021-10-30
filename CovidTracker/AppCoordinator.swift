@@ -35,15 +35,6 @@ class AppCoordinator: Coordinator {
         if let screen = ScreenIdentifier(rawValue: identifier) {
 
             switch screen {
-            case .pro:
-                print("asd")
-                //presentProLanding()
-            case .specialOffer:
-                #if EFECTUM
-                //presentSpecialOffer()
-                #else
-                break
-                #endif
             default:
                 break
             }

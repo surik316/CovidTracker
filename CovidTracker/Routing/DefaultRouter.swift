@@ -31,11 +31,12 @@ class DefaultRouter: Presentable {
         if #available(iOS 13.0, *) {
             container.isModalInPresentation = true
         }
-        container.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        container.navigationBar.shadowImage = UIImage()
-        container.navigationBar.isTranslucent = true
+        //container.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //container.navigationBar.shadowImage = UIImage()
+        //container.navigationBar.isTranslucent = true
         container.navigationBar.barTintColor = .white
         container.navigationBar.tintColor = .white
+        container.navigationBar.topItem?.title = "Some"
         container.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
     }
