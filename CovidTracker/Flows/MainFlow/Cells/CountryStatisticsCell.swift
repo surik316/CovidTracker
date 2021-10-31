@@ -11,7 +11,7 @@ import RxSwift
 import SnapKit
 import Charts
 
-class CountryStatisticsCell: UICollectionViewCell {
+class CountryStatisticsCell: UITableViewCell {
     struct Model {
         let date: String
         let todayCovidCases: Int
@@ -24,7 +24,7 @@ class CountryStatisticsCell: UICollectionViewCell {
     }
     // MARK: UI элементы
     private let descriptionLabel = UILabel()
-    private let countryImageView = UIImageView()
+    private let countryButton = CountryButton()
     private let dateLabel = UILabel()
     private let todayCovidCasesLabel = UILabel()
     private let upDownArrowImageView = UIImageView()
@@ -46,11 +46,12 @@ class CountryStatisticsCell: UICollectionViewCell {
     
     private let titleDeathCasesLable = UILabel()
     private let deathCovidCasesLabel = UILabel()
-    
+    private let shateButton = ShareButton()
+    private let detailsButton = DetailsButton()
     private var bag = DisposeBag()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
         configureUI()
     }
@@ -69,16 +70,17 @@ class CountryStatisticsCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(10)
         }
         
-        addSubview(countryImageView)
-        countryImageView.snp.makeConstraints { make in
+        addSubview(countryButton)
+        countryButton.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
             make.leading.equalTo(descriptionLabel.snp.leading)
-            make.width.equalTo(20)
-            make.height.equalTo(20)
+            make.trailing.equalTo(descriptionLabel.snp.trailing).offset(20)
+            make.height.equalTo(40)
         }
+        
         addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(countryImageView.snp.bottom).offset(10)
+            make.top.equalTo(countryButton.snp.bottom).offset(10)
             make.leading.equalTo(descriptionLabel.snp.leading)
         }
         
@@ -194,13 +196,28 @@ class CountryStatisticsCell: UICollectionViewCell {
             make.trailing.equalTo(titleDeathCasesLable.snp.trailing)
         }
         
+        addSubview(shateButton)
+        shateButton.snp.makeConstraints { make in
+            make.top.equalTo(recoveredCovidCasesLabel.snp.bottom).offset(20)
+            make.leading.equalTo(recoveredCovidCasesLabel.snp.leading)
+            make.trailing.equalTo(progressView.snp.centerX).offset(-10)
+            make.height.equalTo(40)
+        }
+        
+        addSubview(detailsButton)
+        detailsButton.snp.makeConstraints { make in
+            make.top.equalTo(recoveredCovidCasesLabel.snp.bottom).offset(20)
+            make.trailing.equalTo(deathCovidCasesLabel.snp.trailing)
+            make.leading.equalTo(progressView.snp.centerX).offset(10)
+            make.height.equalTo(40)
+        }
     }
     func configureUI() {
         self.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
         descriptionLabel.text = "Statistics"
         descriptionLabel.font = .systemFont(ofSize: 35, weight: .bold)
         descriptionLabel.textColor = .white
-        countryImageView.image = UIImage(named: "russiaFlag")
+//        countryImageView.image = UIImage(named: "russiaFlag")
         dateLabel.font = .systemFont(ofSize: 15)
         barChartTitle.text = "last 14 days"
         barChartTitle.font = .systemFont(ofSize: 15)

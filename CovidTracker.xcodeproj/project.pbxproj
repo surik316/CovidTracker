@@ -12,10 +12,12 @@
 		AA356343272DB05E006DDA53 /* Numeric+Spacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA356342272DB05E006DDA53 /* Numeric+Spacer.swift */; };
 		AA356346272DE521006DDA53 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA356345272DE521006DDA53 /* ShareButton.swift */; };
 		AA356348272DE535006DDA53 /* DetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA356347272DE535006DDA53 /* DetailsButton.swift */; };
+		AA35634A272EDB6F006DDA53 /* CountryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA356349272EDB6F006DDA53 /* CountryButton.swift */; };
+		AA35634C272EFA41006DDA53 /* CityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35634B272EFA41006DDA53 /* CityButton.swift */; };
 		AAA96A5927249D6600560E92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96A5827249D6600560E92 /* AppDelegate.swift */; };
 		AAA96A6227249D6E00560E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAA96A6127249D6E00560E92 /* Assets.xcassets */; };
 		AAA96A6F2724A0C900560E92 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96A6E2724A0C900560E92 /* AppCoordinator.swift */; };
-		AAA96A7B2725C0B200560E92 /* MainPageVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96A7A2725C0B200560E92 /* MainPageVc.swift */; };
+		AAA96A7B2725C0B200560E92 /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96A7A2725C0B200560E92 /* MainPageVC.swift */; };
 		AAA96A832725EFA500560E92 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96A822725EFA500560E92 /* Coordinator.swift */; };
 		AAA96A852725F0D400560E92 /* ScreenIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96A842725F0D400560E92 /* ScreenIdentifier.swift */; };
 		AAA96A872725F4CB00560E92 /* TabsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96A862725F4CB00560E92 /* TabsCoordinator.swift */; };
@@ -40,12 +42,14 @@
 		AA356342272DB05E006DDA53 /* Numeric+Spacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Spacer.swift"; sourceTree = "<group>"; };
 		AA356345272DE521006DDA53 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		AA356347272DE535006DDA53 /* DetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsButton.swift; sourceTree = "<group>"; };
+		AA356349272EDB6F006DDA53 /* CountryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryButton.swift; sourceTree = "<group>"; };
+		AA35634B272EFA41006DDA53 /* CityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityButton.swift; sourceTree = "<group>"; };
 		AAA96A5527249D6600560E92 /* CovidTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CovidTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA96A5827249D6600560E92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAA96A6127249D6E00560E92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAA96A6627249D6E00560E92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAA96A6E2724A0C900560E92 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		AAA96A7A2725C0B200560E92 /* MainPageVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageVc.swift; sourceTree = "<group>"; };
+		AAA96A7A2725C0B200560E92 /* MainPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageVC.swift; sourceTree = "<group>"; };
 		AAA96A822725EFA500560E92 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AAA96A842725F0D400560E92 /* ScreenIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenIdentifier.swift; sourceTree = "<group>"; };
 		AAA96A862725F4CB00560E92 /* TabsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsCoordinator.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			children = (
 				AA35633D272DA431006DDA53 /* ProgressView.swift */,
 				AA356345272DE521006DDA53 /* ShareButton.swift */,
+				AA356349272EDB6F006DDA53 /* CountryButton.swift */,
+				AA35634B272EFA41006DDA53 /* CityButton.swift */,
 				AA356347272DE535006DDA53 /* DetailsButton.swift */,
 			);
 			path = Views;
@@ -146,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				AAA96A842725F0D400560E92 /* ScreenIdentifier.swift */,
-				AAA96A7A2725C0B200560E92 /* MainPageVc.swift */,
+				AAA96A7A2725C0B200560E92 /* MainPageVC.swift */,
 				AA356344272DE509006DDA53 /* Views */,
 				AAA96AA1272C03A500560E92 /* Cells */,
 				AAA96A97272BF84500560E92 /* MainPageViewModel.swift */,
@@ -177,9 +183,9 @@
 			isa = PBXGroup;
 			children = (
 				AAA96A99272C034E00560E92 /* CountryStatisticsCell.swift */,
-				AAA96A9F272C03A100560E92 /* RestWorldStatisticsCell.swift */,
-				AAA96A9D272C037D00560E92 /* WorldStatisticsCell.swift */,
 				AAA96A9B272C036C00560E92 /* CityStatisticsCell.swift */,
+				AAA96A9D272C037D00560E92 /* WorldStatisticsCell.swift */,
+				AAA96A9F272C03A100560E92 /* RestWorldStatisticsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -313,13 +319,15 @@
 				AAA96A922725FE9000560E92 /* DefaultRouter.swift in Sources */,
 				AAA96A8A2725F9D900560E92 /* RouterProtocol.swift in Sources */,
 				AA356341272DB04D006DDA53 /* Formatter+Spacer.swift in Sources */,
+				AA35634A272EDB6F006DDA53 /* CountryButton.swift in Sources */,
 				AAA96A9C272C036C00560E92 /* CityStatisticsCell.swift in Sources */,
 				AAA96A832725EFA500560E92 /* Coordinator.swift in Sources */,
 				AAA96A9A272C034F00560E92 /* CountryStatisticsCell.swift in Sources */,
 				AAA96A98272BF84500560E92 /* MainPageViewModel.swift in Sources */,
 				AAA96A8C2725FA5800560E92 /* PresentableProtocol.swift in Sources */,
-				AAA96A7B2725C0B200560E92 /* MainPageVc.swift in Sources */,
+				AAA96A7B2725C0B200560E92 /* MainPageVC.swift in Sources */,
 				AAA96A6F2724A0C900560E92 /* AppCoordinator.swift in Sources */,
+				AA35634C272EFA41006DDA53 /* CityButton.swift in Sources */,
 				AAA96A9E272C037D00560E92 /* WorldStatisticsCell.swift in Sources */,
 				AA35633E272DA431006DDA53 /* ProgressView.swift in Sources */,
 				AAA96A852725F0D400560E92 /* ScreenIdentifier.swift in Sources */,

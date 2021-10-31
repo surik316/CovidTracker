@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if window == nil {
             window = UIWindow(frame: UIScreen.main.bounds)
         }
-
+        window?.backgroundColor = .yellow
         window?.rootViewController = appCoordinator.toPresent()
         window?.makeKeyAndVisible()
     }
