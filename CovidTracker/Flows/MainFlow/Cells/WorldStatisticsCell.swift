@@ -36,6 +36,11 @@ class WorldStatisticsCell: UITableViewCell {
     
     private let titleDeathCasesLable = UILabel()
     private let deathCovidCasesLable = UILabel()
+    
+    private let activeCircleView = UIView()
+    private let recoveredCircleView = UIView()
+    private let deathCircleView = UIView()
+    
     private var bag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -48,6 +53,10 @@ class WorldStatisticsCell: UITableViewCell {
         super.init(coder: aDecoder)
         setupUI()
         configureUI()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 40, right: 10))
     }
     private func setupUI() {
         addSubview(planetImageView)
@@ -77,16 +86,19 @@ class WorldStatisticsCell: UITableViewCell {
             make.bottom.equalTo(totalCovidCasesLabel.snp.bottom).offset(-5)
             make.leading.equalTo(totalCovidCasesLabel.snp.trailing).offset(5)
         }
-        var recdataEntry = PieChartDataEntry(value: 0)
-        var actdataEntry = PieChartDataEntry(value: 0)
+        let recdataEntry = PieChartDataEntry(value: 0)
+        let actdataEntry = PieChartDataEntry(value: 0)
+        let deathDataEntry = PieChartDataEntry(value: 0)
         var pieCharDataEntries = [PieChartDataEntry]()
-        recdataEntry.value = 10
-        actdataEntry.value = 20
-        
-        pieCharDataEntries = [recdataEntry, actdataEntry]
+        recdataEntry.value = 140
+        actdataEntry.value = 30
+        deathDataEntry.value = 40
+        pieCharDataEntries = [recdataEntry, actdataEntry, deathDataEntry]
         let chartDataSet = PieChartDataSet(entries: pieCharDataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        let colors = [UIColor.red, UIColor.orange]
+        let colors = [UIColor(red: 51/255, green: 199/255, blue: 89/255, alpha: 1),
+                      UIColor(red: 1, green: 148/255, blue: 0, alpha: 1),
+                      UIColor(red: 253/255, green: 59/255, blue: 48/255, alpha: 1)]
         chartDataSet.colors = colors
         chartDataSet.drawValuesEnabled = false
         pieChartView.data = chartData
@@ -99,6 +111,59 @@ class WorldStatisticsCell: UITableViewCell {
             make.leading.equalTo(titleTotalCasesLabel.snp.leading).offset(-20)
             make.width.equalTo(180)
             make.height.equalTo(180)
+        }
+        addSubview(activeCircleView)
+        activeCircleView.snp.makeConstraints { make in
+            make.top.equalTo(pieChartView.snp.top)
+            make.leading.equalTo(pieChartView.snp.trailing).offset(15)
+            make.width.equalTo(15)
+            make.height.equalTo(15)
+        }
+        addSubview(titleActiveCasesLable)
+        titleActiveCasesLable.snp.makeConstraints { make in
+            make.centerY.equalTo(activeCircleView.snp.centerY)
+            make.leading.equalTo(activeCircleView.snp.trailing).offset(5)
+        }
+        addSubview(activeCovidCasesLable)
+        activeCovidCasesLable.snp.makeConstraints { make in
+            make.top.equalTo(titleActiveCasesLable.snp.bottom).offset(5)
+            make.leading.equalTo(titleActiveCasesLable.snp.leading)
+        }
+        
+        addSubview(recoveredCircleView)
+        recoveredCircleView.snp.makeConstraints { make in
+            make.top.equalTo(activeCircleView.snp.bottom).offset(50)
+            make.leading.equalTo(activeCircleView.snp.leading)
+            make.width.equalTo(15)
+            make.height.equalTo(15)
+        }
+        addSubview(titleRecoveredCasesLabel)
+        titleRecoveredCasesLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(recoveredCircleView.snp.centerY)
+            make.leading.equalTo(recoveredCircleView.snp.trailing).offset(5)
+        }
+        addSubview(recoveredCovidCasesLabel)
+        recoveredCovidCasesLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleRecoveredCasesLabel.snp.bottom).offset(5)
+            make.leading.equalTo(titleRecoveredCasesLabel.snp.leading)
+        }
+        
+        addSubview(deathCircleView)
+        deathCircleView.snp.makeConstraints { make in
+            make.top.equalTo(recoveredCircleView.snp.bottom).offset(50)
+            make.leading.equalTo(activeCircleView.snp.leading)
+            make.width.equalTo(15)
+            make.height.equalTo(15)
+        }
+        addSubview(titleDeathCasesLable)
+        titleDeathCasesLable.snp.makeConstraints { make in
+            make.centerY.equalTo(deathCircleView.snp.centerY)
+            make.leading.equalTo(deathCircleView.snp.trailing).offset(5)
+        }
+        addSubview(deathCovidCasesLable)
+        deathCovidCasesLable.snp.makeConstraints { make in
+            make.top.equalTo(titleDeathCasesLable.snp.bottom).offset(5)
+            make.leading.equalTo(titleDeathCasesLable.snp.leading)
         }
         
     }
@@ -123,6 +188,23 @@ class WorldStatisticsCell: UITableViewCell {
         titleDeathCasesLable.textColor = UIColor(red: 253/255, green: 59/255, blue: 48/255, alpha: 1)
         deathCovidCasesLable.font = .systemFont(ofSize: 15)
         
+        activeCircleView.layer.cornerRadius = 8
+        activeCircleView.clipsToBounds = true
+        activeCircleView.backgroundColor = UIColor(red: 1, green: 148/255, blue: 0, alpha: 1)
+        titleActiveCasesLable.text = "ACTIVE"
+        titleActiveCasesLable.textColor = .systemGray
+        
+        recoveredCircleView.layer.cornerRadius = 8
+        recoveredCircleView.clipsToBounds = true
+        recoveredCircleView.backgroundColor = UIColor(red: 51/255, green: 199/255, blue: 89/255, alpha: 1)
+        titleRecoveredCasesLabel.text = "RECOVERED"
+        titleRecoveredCasesLabel.textColor = .systemGray
+        
+        deathCircleView.layer.cornerRadius = 8
+        deathCircleView.clipsToBounds = true
+        deathCircleView.backgroundColor = UIColor(red: 253/255, green: 59/255, blue: 48/255, alpha: 1)
+        titleDeathCasesLable.text = "DEATHS"
+        titleDeathCasesLable.textColor = .systemGray
     }
     func configure(from model: Model) {
         todayCovidCasesLabel.text = "+" + model.todayCovidCases.formattedWithSeparator

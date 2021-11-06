@@ -78,10 +78,14 @@ class MainPageVC: UIViewController {
     private func setupUI() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+                make.leading.equalTo(view.safeAreaLayoutGuide.snp.leadingMargin)
+                make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin)
+             } else {
+                make.edges.equalToSuperview()
+             }
         }
         tableView.register(CountryStatisticsCell.self, forCellReuseIdentifier: countryCellIdentifier)
         tableView.register(CityStatisticsCell.self, forCellReuseIdentifier: cityCellIdentifier)

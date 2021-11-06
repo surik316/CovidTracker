@@ -22,9 +22,9 @@ class TabsRouter: Presentable {
 
     private func configure() {
         container.tabBar.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
-        container.tabBar.barStyle = .black
-        container.tabBar.barTintColor = .white
-        container.tabBar.isTranslucent = false
+        //container.tabBar.barStyle = .black
+        //container.tabBar.barTintColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
+        //container.tabBar.isTranslucent = false
         container.tabBar.tintColor = .white
     }
 
