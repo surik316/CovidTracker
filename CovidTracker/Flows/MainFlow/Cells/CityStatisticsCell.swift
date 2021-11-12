@@ -136,6 +136,8 @@ class CityStatisticsCell: UITableViewCell {
     }
     func configureUI() {
         self.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
+        contentView.isUserInteractionEnabled = false
+        selectionStyle = .none
         titleTotalCasesLabel.text = "Total cases"
         titleTotalCasesLabel.font = .systemFont(ofSize: 15)
         titleTotalCasesLabel.textColor = .white

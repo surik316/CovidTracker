@@ -57,6 +57,7 @@ class MainPageVC: UIViewController {
     private let countryCellIdentifier = "CountryStatisticsCell"
     private let cityCellIdentifier = "CityStatisticsCell"
     private let worldCellIdentifier = "WorldStatisticsCell"
+    private let restWorldCellIdentifier = "RestWorldStatisticsCell"
     var viewModel: MainPageViewModel = .init()
     private lazy var subscriptionOptions: [SimpleCellViewModel] = [
         SubscriptionOption.country,
@@ -90,12 +91,14 @@ class MainPageVC: UIViewController {
         tableView.register(CountryStatisticsCell.self, forCellReuseIdentifier: countryCellIdentifier)
         tableView.register(CityStatisticsCell.self, forCellReuseIdentifier: cityCellIdentifier)
         tableView.register(WorldStatisticsCell.self, forCellReuseIdentifier: worldCellIdentifier)
+        tableView.register(RestWorldStatisticsCell.self, forCellReuseIdentifier: restWorldCellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
     }
     
     private func configure() {
         view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
+        tableView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
     }
     
     private func setupBindings() {
@@ -132,7 +135,7 @@ extension MainPageVC: UITableViewDataSource {
             case .world:
                 return dequeueWorldCell(at: indexPath)
             case .restWorld:
-                return dequeueCountryCell(at: indexPath)
+                return dequeueRestCell(at: indexPath)
             default:
                 debugPrint("")
             }
@@ -175,6 +178,27 @@ extension MainPageVC: UITableViewDataSource {
             recoveredCovidCases: 33603,
             activeCovidCases: 18302686,
             deathCovidCases: 5013916)
+        cell.configure(from: model)
+        
+        return cell
+    }
+    private func dequeueRestCell(at indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: restWorldCellIdentifier, for: indexPath) as! RestWorldStatisticsCell
+        
+        let model = RestWorldStatisticsCell.Model(
+            totalCovidCases: [
+                CellModel(cellNumber: nil, countryName: "Russia", totalCases: 123123, todayCases: 12312),
+                CellModel(cellNumber: nil, countryName: "Russia", totalCases: 123123, todayCases: 12312),
+                CellModel(cellNumber: nil, countryName: "Russia", totalCases: 123123, todayCases: 12312)],
+            activeCovidCases: [
+                CellModel(cellNumber: nil, countryName: "German", totalCases: 123123, todayCases: 12312),
+                CellModel(cellNumber: nil, countryName: "German", totalCases: 123123, todayCases: 12312),
+                CellModel(cellNumber: nil, countryName: "German", totalCases: 123123, todayCases: 12312)],
+            deathCovidCases: [
+                CellModel(cellNumber: nil, countryName: "Canada", totalCases: 123123, todayCases: 12312),
+                CellModel(cellNumber: nil, countryName: "Canada", totalCases: 123123, todayCases: 12312),
+                CellModel(cellNumber: nil, countryName: "Canada", totalCases: 123123, todayCases: 12312)
+            ])
         cell.configure(from: model)
         return cell
     }

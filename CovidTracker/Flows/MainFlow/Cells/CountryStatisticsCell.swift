@@ -217,10 +217,11 @@ class CountryStatisticsCell: UITableViewCell {
     }
     func configureUI() {
         self.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
+        contentView.isUserInteractionEnabled = false
+        selectionStyle = .none
         descriptionLabel.text = "Statistics"
         descriptionLabel.font = .systemFont(ofSize: 35, weight: .bold)
         descriptionLabel.textColor = .white
-//        countryImageView.image = UIImage(named: "russiaFlag")
         dateLabel.font = .systemFont(ofSize: 15)
         barChartTitle.text = "last 14 days"
         barChartTitle.font = .systemFont(ofSize: 15)

@@ -169,6 +169,8 @@ class WorldStatisticsCell: UITableViewCell {
     }
     func configureUI() {
         self.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
+        contentView.isUserInteractionEnabled = false
+        selectionStyle = .none
         descriptionLabel.text = "World"
         planetImageView.image = UIImage(named: "planet")
         todayCovidCasesLabel.textColor = UIColor(red: 1, green: 148/255, blue: 0, alpha: 1)
