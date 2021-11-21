@@ -58,7 +58,7 @@ class MainPageVC: UIViewController {
     private let cityCellIdentifier = "CityStatisticsCell"
     private let worldCellIdentifier = "WorldStatisticsCell"
     private let restWorldCellIdentifier = "RestWorldStatisticsCell"
-    var viewModel: MainPageViewModel = .init()
+    var viewModel: MainPageViewModel?
     private lazy var subscriptionOptions: [SimpleCellViewModel] = [
         SubscriptionOption.country,
         SubscriptionOption.city,
@@ -66,12 +66,12 @@ class MainPageVC: UIViewController {
         SubscriptionOption.restWorld,
     ]
     // MARK: override свойства
-    
     // MARK: override методы
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         configure()
+        viewModel?.getCountryData(name: "Russia")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -187,17 +187,17 @@ extension MainPageVC: UITableViewDataSource {
         
         let model = RestWorldStatisticsCell.Model(
             totalCovidCases: [
-                CellModel(cellNumber: nil, countryName: "Russia", totalCases: 123123, todayCases: 12312),
-                CellModel(cellNumber: nil, countryName: "Russia", totalCases: 123123, todayCases: 12312),
-                CellModel(cellNumber: nil, countryName: "Russia", totalCases: 123123, todayCases: 12312)],
+                CellModel(countryName: "Russia", totalCases: 123123, todayCases: 12312),
+                CellModel(countryName: "Russia", totalCases: 123123, todayCases: 12312),
+                CellModel(countryName: "Russia", totalCases: 123123, todayCases: 12312)],
             activeCovidCases: [
-                CellModel(cellNumber: nil, countryName: "German", totalCases: 123123, todayCases: 12312),
-                CellModel(cellNumber: nil, countryName: "German", totalCases: 123123, todayCases: 12312),
-                CellModel(cellNumber: nil, countryName: "German", totalCases: 123123, todayCases: 12312)],
+                CellModel(countryName: "German", totalCases: 123123, todayCases: 12312),
+                CellModel(countryName: "German", totalCases: 123123, todayCases: 12312),
+                CellModel(countryName: "German", totalCases: 123123, todayCases: 12312)],
             deathCovidCases: [
-                CellModel(cellNumber: nil, countryName: "Canada", totalCases: 123123, todayCases: 12312),
-                CellModel(cellNumber: nil, countryName: "Canada", totalCases: 123123, todayCases: 12312),
-                CellModel(cellNumber: nil, countryName: "Canada", totalCases: 123123, todayCases: 12312)
+                CellModel(countryName: "Canada", totalCases: 123123, todayCases: 12312),
+                CellModel(countryName: "Canada", totalCases: 123123, todayCases: 12312),
+                CellModel(countryName: "Canada", totalCases: 123123, todayCases: 12312)
             ])
         cell.configure(from: model)
         return cell

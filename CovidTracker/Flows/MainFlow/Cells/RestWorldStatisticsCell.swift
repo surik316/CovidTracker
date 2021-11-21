@@ -64,13 +64,17 @@ class RestWorldStatisticsCell: UITableViewCell {
             default:
                 self.rowsToDisplay.onNext(self.deathCovidCases)
             }
-        })
-        .disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+        
         rowsToDisplay.asObservable().bind(to: tableView.rx.items(cellIdentifier: identifierCell)) { row, model, cell in
             if let cell = cell as? CellTableView {
                 cell.configure(from: model, row: row)
             }
         }.disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(CellModel.self).subscribe(onNext: { model in
+            print(model)
+        }).disposed(by: disposeBag)
     }
     private func setupUI() {
         addSubview(segmentedControl)
@@ -87,7 +91,6 @@ class RestWorldStatisticsCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-15)
         }
-        tableView.delegate = self
         tableView.register(CellTableView.self, forCellReuseIdentifier: identifierCell)
         
         
@@ -170,8 +173,4 @@ extension RestWorldStatisticsCell {
         }
         
     }
-}
-extension RestWorldStatisticsCell: UITableViewDelegate {
-    
-    
 }

@@ -24,6 +24,7 @@ class AppCoordinator: Coordinator {
     }
     func start() {
         let module = MainPageVC()
+        module.viewModel = MainPageViewModel()
         router.setRootModule(module)
     }
     func toPresent() -> UIViewController {
