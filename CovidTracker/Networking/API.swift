@@ -14,6 +14,7 @@ protocol EndPoint {
     var parameters: [URLQueryItem] { get }
     var method: String { get }
 }
+
 struct CountryInfoModel: Codable {
     let updated: Int
     let country: String
@@ -67,8 +68,8 @@ enum CoronaEndPoint: EndPoint {
         case .getStateData, .getWorldData:
             return [URLQueryItem(name: "yesterday", value: nil)]
         case .getOtherCountriesData:
-            return [URLQueryItem(name: "yesterday", value: nil),
-                    URLQueryItem(name: "sort", value: nil)]
+            return [URLQueryItem(name: "yesterday=", value: nil),
+                    URLQueryItem(name: "sort=", value: nil)]
         }
     }
     
@@ -81,7 +82,9 @@ enum CoronaEndPoint: EndPoint {
 }
 
 class NetworkEngine {
+    
     class func request<T: Codable>(endpoint: EndPoint, completion: @escaping(Result<T, Error>) -> ()) {
+        
         var components = URLComponents()
         components.scheme = endpoint.scheme
         components.host = endpoint.baseURL
@@ -111,7 +114,6 @@ class NetworkEngine {
                     completion(.failure(error))
                 }
             }
-
         }
         dataTask.resume()
     }

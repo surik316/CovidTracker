@@ -172,6 +172,7 @@ class WorldStatisticsCell: UITableViewCell {
         contentView.isUserInteractionEnabled = false
         selectionStyle = .none
         descriptionLabel.text = "World"
+        descriptionLabel.textColor = .white
         planetImageView.image = UIImage(named: "planet")
         todayCovidCasesLabel.textColor = UIColor(red: 1, green: 148/255, blue: 0, alpha: 1)
         
@@ -207,6 +208,12 @@ class WorldStatisticsCell: UITableViewCell {
         deathCircleView.backgroundColor = UIColor(red: 253/255, green: 59/255, blue: 48/255, alpha: 1)
         titleDeathCasesLable.text = "DEATHS"
         titleDeathCasesLable.textColor = .systemGray
+        
+        deathCovidCasesLable.textColor = .white
+        activeCovidCasesLable.textColor = .white
+        totalCovidCasesLabel.textColor = .white
+        recoveredCovidCasesLabel.textColor = .white
+        
     }
     func configure(from model: Model) {
         todayCovidCasesLabel.text = "+" + model.todayCovidCases.formattedWithSeparator

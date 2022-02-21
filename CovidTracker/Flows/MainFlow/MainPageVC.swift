@@ -144,24 +144,18 @@ extension MainPageVC: UITableViewDataSource {
         }
         return tableView.dequeueReusableCell(withIdentifier: countryCellIdentifier, for: indexPath)
     }
+    
     private func dequeueCountryCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: countryCellIdentifier, for: indexPath) as! CountryStatisticsCell
-        let model = CountryStatisticsCell.Model(
-            date: "New cases at 10/29/2021",
-            todayCovidCases: 39849,
-            theDayBeforeCovidCases: 39070,
-            totalCovidCases: 8432546,
-            recoveredCovidCases: 7302515,
-            activeCovidCases: 893811,
-            deathCovidCases: 236220,
-            last14DaysCases: [5,5,5,5,5,5])
+        let model = CountryInfoModel(updated: 12312, country: "Russia", countryInfo: Flag(flag: "some"), cases: 1231, todayCases: 312312, deaths: 12312, todayDeaths: 123123, recovered: 123123, todayRecovered: 123123, active: 123123, critical: 123123, tests: 12312, population: 123123)
         cell.configure(from: model)
         return cell
     }
+    
     private func dequeueCityCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cityCellIdentifier, for: indexPath) as! CityStatisticsCell
         let model = CityStatisticsCell.Model(
-            city: "Moskow",
+            city: "Moscow",
             todayCovidCases: 171,
             totalCovidCases: 39766,
             recoveredCovidCases: 33603,
@@ -176,8 +170,8 @@ extension MainPageVC: UITableViewDataSource {
             todayCovidCases: 237563,
             totalCovidCases: 247353512,
             recoveredCovidCases: 33603,
-            activeCovidCases: 18302686,
-            deathCovidCases: 5013916)
+            activeCovidCases: 4302,
+            deathCovidCases: 3916)
         cell.configure(from: model)
         
         return cell

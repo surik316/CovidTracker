@@ -152,6 +152,11 @@ class CityStatisticsCell: UITableViewCell {
         titleDeathCasesLable.font = .systemFont(ofSize: 15)
         titleDeathCasesLable.textColor = UIColor(red: 253/255, green: 59/255, blue: 48/255, alpha: 1)
         deathCovidCasesLable.font = .systemFont(ofSize: 15)
+        activeCovidCasesLable.textColor = .white
+        totalCovidCasesLabel.textColor = .white
+        deathCovidCasesLable.textColor = .white
+        recoveredCovidCasesLabel.textColor = .white
+        
         
     }
     func configure(from model: Model) {

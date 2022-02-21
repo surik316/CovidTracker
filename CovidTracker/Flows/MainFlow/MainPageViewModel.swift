@@ -24,7 +24,11 @@ struct WorldModel: Codable {
 }
 
 class MainPageViewModel {
-    private var countryData: CountryInfoModel!
+    private(set) var countryData: CountryInfoModel!
+    private(set) var stateData: StateModel!
+    private(set) var otherCountriesData: [CountryInfoModel]!
+    private(set) var worldData: WorldModel!
+    
     init() {
     }
     func getCountryData(name: String) {
@@ -40,15 +44,15 @@ class MainPageViewModel {
         NetworkEngine.request(endpoint: CoronaEndPoint.getStateData(name: "Washington")) { (result: Result<StateModel, Error>) in
             switch result {
             case .success(let response):
-                print(response)
+                self.stateData = response
             case .failure(let error):
                 print(error)
             }
         }
-        NetworkEngine.request(endpoint: CoronaEndPoint.getOtherCountriesData) { (result: Result<CountryInfoModel, Error>) in
+        NetworkEngine.request(endpoint: CoronaEndPoint.getOtherCountriesData) { (result: Result<[CountryInfoModel], Error>) in
             switch result {
             case .success(let response):
-                print(response)
+                self.otherCountriesData = response
             case .failure(let error):
                 print(error)
             }
@@ -56,7 +60,7 @@ class MainPageViewModel {
         NetworkEngine.request(endpoint: CoronaEndPoint.getWorldData) { (result: Result<WorldModel, Error>) in
             switch result {
             case .success(let response):
-                print(response)
+                self.worldData = response
             case .failure(let error):
                 print(error)
             }

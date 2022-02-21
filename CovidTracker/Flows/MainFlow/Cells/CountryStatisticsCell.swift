@@ -21,6 +21,7 @@ class CountryStatisticsCell: UITableViewCell {
         let activeCovidCases: Int
         let deathCovidCases: Int
         let last14DaysCases: [Int]
+        
     }
     // MARK: UI элементы
     private let descriptionLabel = UILabel()
@@ -224,12 +225,17 @@ class CountryStatisticsCell: UITableViewCell {
         descriptionLabel.textColor = .white
         dateLabel.font = .systemFont(ofSize: 15)
         barChartTitle.text = "last 14 days"
+        barChartTitle.textColor = .white
         barChartTitle.font = .systemFont(ofSize: 15)
         separatorView.backgroundColor = UIColor(red: 44/255, green: 44/255, blue: 46/255, alpha: 1)
         titleTotalCasesLabel.text = "Total cases"
         titleTotalCasesLabel.font = .systemFont(ofSize: 15)
         titleTotalCasesLabel.textColor = .white
         totalCovidCasesLabel.font = .systemFont(ofSize: 25, weight: .bold)
+        totalCovidCasesLabel.textColor = .white
+        recoveredCovidCasesLabel.textColor = .white
+        deathCovidCasesLabel.textColor = .white
+        activeCovidCasesLabel.textColor = .white
         theDayBeforeCovidCasesLabel.font = .systemFont(ofSize: 15)
         theDayBeforeCovidCasesLabel.textColor = .systemGray
         titleRecoveredCasesLabel.text = "Recovered"
@@ -244,9 +250,13 @@ class CountryStatisticsCell: UITableViewCell {
         deathCovidCasesLabel.font = .systemFont(ofSize: 15)
         todayCovidCasesLabel.textColor = UIColor(red: 1, green: 148/255, blue: 0, alpha: 1)
         todayCovidCasesLabel.font = .systemFont(ofSize: 38, weight: .bold)
-        
+        dateLabel.textColor = .white
     }
-    func configure(from model: Model) {
+    func configure(from model: CountryInfoModel) {
+        let model = Model(date: "11/12/22", todayCovidCases: 123,
+                          theDayBeforeCovidCases: model.updated, totalCovidCases: model.cases,
+                          recoveredCovidCases: model.todayRecovered, activeCovidCases: model.updated,
+                          deathCovidCases: model.deaths, last14DaysCases: [])
         dateLabel.text = model.date
         todayCovidCasesLabel.text = "+" + model.todayCovidCases.formattedWithSeparator
         theDayBeforeCovidCasesLabel.text = "+" + model.theDayBeforeCovidCases.formattedWithSeparator + " the day before"

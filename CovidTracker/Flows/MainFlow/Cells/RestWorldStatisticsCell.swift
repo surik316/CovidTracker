@@ -99,6 +99,7 @@ class RestWorldStatisticsCell: UITableViewCell {
         self.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
         contentView.isUserInteractionEnabled = false
         tableView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
+        
         selectionStyle = .none
     }
     func configure(from model: Model) {
@@ -160,9 +161,12 @@ extension RestWorldStatisticsCell {
         private func configureUI() {
             rightArrowImageView.image = UIImage(systemName: "arrow.right")
             backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
-            
+            cellNumberLabel.textColor = .white
+            countryLabel.textColor = .white
+            totalCasesLabel.textColor = .white
             totalCasesLabel.font = .systemFont(ofSize: 15, weight: .bold)
             todayCasesLabel.font = .systemFont(ofSize: 10, weight: .bold)
+            totalCasesLabel.textColor = .white
         }
         func configure(from model: CellModel, row: Int) {
             cellNumberLabel.text = String(row)
