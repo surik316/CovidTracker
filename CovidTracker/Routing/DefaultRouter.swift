@@ -17,6 +17,7 @@ class DefaultRouter: Presentable {
 
     private let container: UINavigationController
     private(set) var modules: [DeliveryKind] = []
+    
     init(
         with rootModule: Presentable?
     ) {
@@ -45,7 +46,11 @@ class DefaultRouter: Presentable {
         return container
     }
 
-    func present(_ module: Presentable, animated: Bool, isModalInPresentation: Bool = true, completion: (() -> Void)?) {
+    func present(_ module: Presentable,
+                 animated: Bool,
+                 isModalInPresentation: Bool = true,
+                 completion: (() -> Void)?)
+    {
         if #available(iOS 13.0, *) {
             module.toPresent().isModalInPresentation = isModalInPresentation
         }
@@ -106,7 +111,6 @@ class DefaultRouter: Presentable {
             return nil
         }
     }
-
-    func presentScreen(_ identifier: String) {}
+    
     func processPush(_ push: [String: Any]) {}
 }

@@ -8,24 +8,12 @@
 import Foundation
 import UIKit
 
-protocol Presentable: class {
+protocol Presentable: AnyObject {
     func toPresent() -> UIViewController
-    
-    func presentScreen(_ identifier: String)
     func processPush(_ push: [String: Any])
 }
 
 extension UIViewController: Presentable {
-    
-    func presentScreen(_ identifier: String) {
-        
-    }
-    
-    func processPush(_ push: [String : Any]) {
-        
-    }
-    
-    func toPresent() -> UIViewController {
-        return self
-    }
+    func processPush(_ push: [String : Any]) {}
+    func toPresent() -> UIViewController { return self }
 }

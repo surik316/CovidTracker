@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if window == nil {
             window = UIWindow(frame: UIScreen.main.bounds)
         }
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .dark
+        }
         window?.rootViewController = appCoordinator.toPresent()
         window?.makeKeyAndVisible()
     }

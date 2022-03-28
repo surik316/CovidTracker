@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class DetailsButton: UIButton {
+final class DetailsButton: UIButton {
     
     private let detailsImageView = UIImageView()
     private let descriptionLabel = UILabel()

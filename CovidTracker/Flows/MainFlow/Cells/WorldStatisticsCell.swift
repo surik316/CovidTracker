@@ -11,7 +11,8 @@ import RxSwift
 import SnapKit
 import Charts
 
-class WorldStatisticsCell: UITableViewCell {
+final class WorldStatisticsCell: UITableViewCell {
+    
     struct Model {
         let todayCovidCases: Int
         let totalCovidCases: Int
@@ -19,6 +20,7 @@ class WorldStatisticsCell: UITableViewCell {
         let activeCovidCases: Int
         let deathCovidCases: Int
     }
+    
     // MARK: UI элементы
     private let planetImageView = UIImageView()
     private let descriptionLabel = UILabel()

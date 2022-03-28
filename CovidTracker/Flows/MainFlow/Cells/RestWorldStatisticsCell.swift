@@ -16,13 +16,15 @@ struct CellModel {
     let totalCases: Int
     let todayCases: Int
 }
-class RestWorldStatisticsCell: UITableViewCell {
+
+final class RestWorldStatisticsCell: UITableViewCell {
     
     struct Model {
         let totalCovidCases: [CellModel]
         let activeCovidCases: [CellModel]
         let deathCovidCases: [CellModel]
     }
+    
     // MARK: UI элементы
     private let tableView = UITableView()
     private let segmentedControl: UISegmentedControl = {

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ShareButton: UIButton {
+final class ShareButton: UIButton {
     
     private let shareImageView = UIImageView()
     private let descriptionLabel = UILabel()

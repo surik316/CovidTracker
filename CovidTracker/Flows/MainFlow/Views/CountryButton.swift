@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class CountryButton: UIButton {
+final class CountryButton: UIButton {
     
     private let countryImageView = UIImageView()
     var descriptionLabel = UILabel()

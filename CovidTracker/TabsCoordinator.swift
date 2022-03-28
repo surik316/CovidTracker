@@ -25,31 +25,18 @@ class TabBarCoordinator: NSObject, Coordinator {
         }
     }
 
-    func start() {
-
-    }
+    func start() {}
 
     func toPresent() -> UIViewController {
         return self.router.toPresent()
     }
+    
     func processPush(_ push: [String: Any]) {
         
         let activeIndex = router.container.selectedIndex
         
         router.tabs[activeIndex].processPush(push)
         
-    }
-
-    func presentScreen(_ identifier: String) {
-        
-        if let screen = ScreenIdentifier(rawValue: identifier) {
-
-            switch screen {
-            default:
-                break
-            }
-            
-        }
     }
 }
 
@@ -64,12 +51,9 @@ extension TabBarCoordinator {
 extension TabBarCoordinator: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
         let item = tabBarController.tabBar.selectedItem
-        
         guard let itemTitle = item?.title else {
             return
         }
-        
     }
 }

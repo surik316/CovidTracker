@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ProgressView: UIView {
+final class ProgressView: UIView {
+    
     private let recoveredCasesView = UIView()
     private let activeCasesView = UIView()
     private var recoveredCases: Int!

@@ -12,13 +12,6 @@ enum FlowResult<R> {
     case canceled
 }
 
-struct CoordinatorConstants {
-
-    struct Push {
-        static let screen = "SCREEN"
-    }
-}
-
 protocol Coordinator: Presentable {
 
     associatedtype Result

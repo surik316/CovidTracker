@@ -8,10 +8,12 @@ import Foundation
 import UIKit
 import SnapKit
 
-class CityButton: UIButton {
+final class CityButton: UIButton {
+    
     private let locationImageView = UIImageView()
     var descriptionLabel = UILabel()
     private let arrowDownImageView = UIImageView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()

@@ -10,7 +10,8 @@ import UIKit
 import RxSwift
 import SnapKit
 
-class CityStatisticsCell: UITableViewCell {
+final class CityStatisticsCell: UITableViewCell {
+    
     struct Model {
         let city: String
         let todayCovidCases: Int
@@ -19,6 +20,7 @@ class CityStatisticsCell: UITableViewCell {
         let activeCovidCases: Int
         let deathCovidCases: Int
     }
+    
     // MARK: UI элементы
     private let cityButton = CityButton()
     private let todayCovidCasesLabel = UILabel()

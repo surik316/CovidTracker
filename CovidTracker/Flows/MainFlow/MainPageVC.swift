@@ -11,41 +11,16 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-private enum Static {
-    static let settingsIcon = UIImage(named: "settings_wheel")
-}
-protocol SimpleCellViewModel {
-    
-}
-
-extension SubscriptionOption: SimpleCellViewModel {
-    
-}
-
-struct TextCellViewModel: SimpleCellViewModel {
-    let text: String
-    let textColor: UIColor
-}
-struct CityCellViewModel: SimpleCellViewModel {
-    let date: String
-    let todayCovidCases: Int
-    let theDayBeforeCovidCases: Int
-    let totalCovidCases: Int
-    let recoveredCovidCases: Int
-    let activeCovidCases: Int
-    let deathCovidCases: Int
-    let last14DaysCases: [Int]
-}
-enum SubscriptionOption {
+fileprivate enum CoronaCellOption {
     case country
     case world
     case restWorld
     case city
     case no
 }
+extension CoronaCellOption: SimpleCellViewModel {}
 
 class MainPageVC: UIViewController {
-    
     
     // MARK: UI элементы
     private let tableView = UITableView(frame: .zero, style: .grouped)
@@ -53,29 +28,29 @@ class MainPageVC: UIViewController {
     // MARK: Приватные свойства
     private let bag = DisposeBag()
 
-    // MARK: Публичные свойства
     private let countryCellIdentifier = "CountryStatisticsCell"
     private let cityCellIdentifier = "CityStatisticsCell"
     private let worldCellIdentifier = "WorldStatisticsCell"
     private let restWorldCellIdentifier = "RestWorldStatisticsCell"
     var viewModel: MainPageViewModel?
     private lazy var subscriptionOptions: [SimpleCellViewModel] = [
-        SubscriptionOption.country,
-        SubscriptionOption.city,
-        SubscriptionOption.world,
-        SubscriptionOption.restWorld,
+        CoronaCellOption.country,
+        CoronaCellOption.city,
+        CoronaCellOption.world,
+        CoronaCellOption.restWorld,
     ]
-    // MARK: override свойства
-    // MARK: override методы
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         configure()
-        viewModel?.getCountryData(name: "Russia")
+        viewModel?.getCountryData(name: "Italy")
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
     private func setupUI() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -110,9 +85,9 @@ extension MainPageVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item  = subscriptionOptions[indexPath.row]
         switch item {
-        case SubscriptionOption.country:
+        case CoronaCellOption.country:
             return 430
-        case SubscriptionOption.city:
+        case CoronaCellOption.city:
             return 300
         default:
             return 430
@@ -121,12 +96,14 @@ extension MainPageVC: UITableViewDelegate {
 }
 
 extension MainPageVC: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subscriptionOptions.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch subscriptionOptions[indexPath.row] {
-        case let option as SubscriptionOption:
+        case let option as CoronaCellOption:
             switch option {
             case .country:
                 return dequeueCountryCell(at: indexPath)
@@ -147,7 +124,7 @@ extension MainPageVC: UITableViewDataSource {
     
     private func dequeueCountryCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: countryCellIdentifier, for: indexPath) as! CountryStatisticsCell
-        let model = CountryInfoModel(updated: 12312, country: "Russia", countryInfo: Flag(flag: "some"), cases: 1231, todayCases: 312312, deaths: 12312, todayDeaths: 123123, recovered: 123123, todayRecovered: 123123, active: 123123, critical: 123123, tests: 12312, population: 123123)
+        let model = CountryInfoModel(updated: 12312, country: "Russia", cases: 1231, todayCases: 312312, deaths: 12312, todayDeaths: 123123, recovered: 123123, todayRecovered: 123123, active: 123123, critical: 123123, tests: 12312, population: 123123)
         cell.configure(from: model)
         return cell
     }
@@ -164,6 +141,7 @@ extension MainPageVC: UITableViewDataSource {
         cell.configure(from: model)
         return cell
     }
+    
     private func dequeueWorldCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: worldCellIdentifier, for: indexPath) as! WorldStatisticsCell
         let model = WorldStatisticsCell.Model(
@@ -176,6 +154,7 @@ extension MainPageVC: UITableViewDataSource {
         
         return cell
     }
+    
     private func dequeueRestCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: restWorldCellIdentifier, for: indexPath) as! RestWorldStatisticsCell
         

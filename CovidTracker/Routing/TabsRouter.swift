@@ -23,11 +23,10 @@ class TabsRouter: Presentable {
     private func configure() {
         //container.tabBar.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
         //container.tabBar.barStyle = .black
-        container.tabBar.barTintColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
-        //container.tabBar.isTranslucent = false
-        container.tabBar.isTranslucent = true
+        //container.tabBar.barTintColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1)
+        //container.tabBar.isTranslucent = falses
         //container.tabBar.
-        container.tabBar.tintColor = .white
+        //container.tabBar.tintColor = .white
     }
 
     func toPresent() -> UIViewController {
@@ -62,6 +61,5 @@ class TabsRouter: Presentable {
         return modules.last ?? container
     }
 
-    func presentScreen(_ identifier: String) {}
     func processPush(_ push: [String: Any]) {}
 }
