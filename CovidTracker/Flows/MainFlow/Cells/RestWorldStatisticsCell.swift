@@ -6,10 +6,10 @@
 //
 import Foundation
 import UIKit
-import RxSwift
 import SnapKit
 import Charts
 import RxCocoa
+import RxSwift
 
 struct CellModel {
     let countryName: String

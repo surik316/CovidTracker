@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import RxSwift
 import SnapKit
 
 final class CityStatisticsCell: UITableViewCell {
@@ -39,7 +38,6 @@ final class CityStatisticsCell: UITableViewCell {
     private let deathCovidCasesLable = UILabel()
     private let shateButton = ShareButton()
     private let detailsButton = DetailsButton()
-    private var bag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

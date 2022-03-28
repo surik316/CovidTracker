@@ -7,8 +7,6 @@
 
 import Foundation
 import UIKit
-import RxSwift
-import RxCocoa
 import SnapKit
 
 fileprivate enum CoronaCellOption {
@@ -26,7 +24,6 @@ class MainPageVC: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .grouped)
     
     // MARK: Приватные свойства
-    private let bag = DisposeBag()
 
     private let countryCellIdentifier = "CountryStatisticsCell"
     private let cityCellIdentifier = "CityStatisticsCell"

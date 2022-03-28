@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import RxSwift
 import SnapKit
 import Charts
 
@@ -43,7 +42,6 @@ final class WorldStatisticsCell: UITableViewCell {
     private let recoveredCircleView = UIView()
     private let deathCircleView = UIView()
     
-    private var bag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
